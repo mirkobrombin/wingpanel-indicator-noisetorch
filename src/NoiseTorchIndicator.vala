@@ -104,6 +104,11 @@ public Wingpanel.Indicator? get_indicator (Module module, Wingpanel.IndicatorMan
 {
     debug ("Activating NoiseTorch Indicator");
 
+    if (server_type != Wingpanel.IndicatorManager.ServerType.SESSION) {
+        /* We want to display our monitor indicator only in the "normal" session, not on the login screen, so stop here! */
+        return null;
+    }
+
     // indicator creation
     var indicator = new NoiseTorch.Indicator ();
 
